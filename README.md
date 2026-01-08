@@ -1,4 +1,4 @@
-### [V-WORLD](https://www.vworld.kr/)와 [OpenWeatherMap](https://openweathermap.org/)의 API를 이용해서 일기예보
+### [V-WORLD](https://www.vworld.kr/)와 [OpenWeatherMap](https://openweathermap.org/)의 API를 사용해서 만든 일기예보 서비스.
 
 - 위도, 경도 값을 얻기 위해 사용한 API
   - https://www.vworld.kr/dev/v4dv_geocoderguide2_s001.do
