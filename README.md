@@ -13,72 +13,72 @@
 
 ---
 
-`Ex 서울역, 동대구역`
-- 서울역
+`Ex 수서역, 동대구역`
+- 수서역
 ```
 {
     "currentDto": {
-        "clouds": 0,
-        "condition": "맑음",
-        "feelsLike": -11.14,
-        "humidity": 57,
-        "icon": "01n",
-        "temp": -8.16,
-        "windSpeed": 1.54
+        "clouds": 75,
+        "condition": "튼구름",
+        "feelsLike": -0.09,
+        "humidity": 65,
+        "icon": "04n",
+        "temp": 2.53,
+        "windSpeed": 2.57
     },
     "forecastDtos": [
         {
-            "avgFeelsLike": -4.42,
-            "date": "2026-01-09",
-            "feelsLikeAtMax": -0.71,
-            "feelsLikeAtMin": -6.82,
-            "maxTemp": 1.94,
-            "midnightCondition": "맑음",
-            "midnightIcon": "01n",
-            "minTemp": -6.82,
-            "noonCondition": "온흐림",
-            "noonIcon": "04d"
-        },
-        {
-            "avgFeelsLike": -3.09,
+            "avgFeelsLike": -3.93,
             "date": "2026-01-10",
-            "feelsLikeAtMax": 0.15,
-            "feelsLikeAtMin": -9.57,
-            "maxTemp": 4.83,
-            "midnightCondition": "실 비",
-            "midnightIcon": "10n",
-            "minTemp": -2.77,
+            "feelsLikeAtMax": -1.5,
+            "feelsLikeAtMin": -10.5,
+            "maxTemp": 4.14,
+            "midnightCondition": "튼구름",
+            "midnightIcon": "04n",
+            "minTemp": -3.5,
             "noonCondition": "가벼운 눈",
             "noonIcon": "13d"
         },
         {
-            "avgFeelsLike": -12.73,
+            "avgFeelsLike": -13.28,
             "date": "2026-01-11",
-            "feelsLikeAtMax": -10.5,
-            "feelsLikeAtMin": -15.43,
-            "maxTemp": -3.76,
+            "feelsLikeAtMax": -11.61,
+            "feelsLikeAtMin": -14.8,
+            "maxTemp": -4.61,
             "midnightCondition": "맑음",
             "midnightIcon": "01n",
-            "minTemp": -8.43,
-            "noonCondition": "구름조금",
-            "noonIcon": "03d"
+            "minTemp": -7.8,
+            "noonCondition": "약간의 구름이 낀 하늘",
+            "noonIcon": "02d"
         },
         {
-            "avgFeelsLike": -7.4,
+            "avgFeelsLike": -5.96,
             "date": "2026-01-12",
-            "feelsLikeAtMax": -1.65,
-            "feelsLikeAtMin": -14.14,
-            "maxTemp": 3.21,
+            "feelsLikeAtMax": -0.58,
+            "feelsLikeAtMin": -11.39,
+            "maxTemp": 3.83,
             "midnightCondition": "맑음",
             "midnightIcon": "01n",
-            "minTemp": -8.56,
-            "noonCondition": "구름조금",
-            "noonIcon": "03d"
+            "minTemp": -7.62,
+            "noonCondition": "튼구름",
+            "noonIcon": "04d"
+        },
+        {
+            "avgFeelsLike": -8.89,
+            "date": "2026-01-13",
+            "feelsLikeAtMax": -1.05,
+            "feelsLikeAtMin": -13.75,
+            "maxTemp": 2.76,
+            "midnightCondition": "가벼운 눈",
+            "midnightIcon": "13n",
+            "minTemp": -7.14,
+            "noonCondition": "튼구름",
+            "noonIcon": "04d"
         }
     ],
-    "fullAddress": "서울특별시 중구 만리재로33길 21 (만리동1가,LIG 서울역 리가)",
-    "location": "서울역",
-    "today": "2026-01-08"
+    "fullAddress": "서울특별시 강남구 광평로 270 (수서동)",
+    "location": "서울 수서역",
+    "today": "2026-01-09"
 }
 ```
 - 동대구역
@@ -87,64 +87,64 @@
     "currentDto": {
         "clouds": 0,
         "condition": "맑음",
-        "feelsLike": -8.48,
-        "humidity": 33,
+        "feelsLike": -2.1,
+        "humidity": 64,
         "icon": "01n",
-        "temp": -5.1,
-        "windSpeed": 2.06
+        "temp": -2.1,
+        "windSpeed": 0.51
     },
     "forecastDtos": [
         {
-            "avgFeelsLike": -2.83,
-            "date": "2026-01-09",
-            "feelsLikeAtMax": 4.69,
-            "feelsLikeAtMin": -8.06,
-            "maxTemp": 4.69,
+            "avgFeelsLike": -2.34,
+            "date": "2026-01-10",
+            "feelsLikeAtMax": 2.69,
+            "feelsLikeAtMin": -4.77,
+            "maxTemp": 6.94,
             "midnightCondition": "맑음",
             "midnightIcon": "01n",
-            "minTemp": -4.85,
+            "minTemp": -2.1,
+            "noonCondition": "약간의 구름이 낀 하늘",
+            "noonIcon": "02d"
+        },
+        {
+            "avgFeelsLike": -10.04,
+            "date": "2026-01-11",
+            "feelsLikeAtMax": -8.49,
+            "feelsLikeAtMin": -11.4,
+            "maxTemp": -1.9,
+            "midnightCondition": "튼구름",
+            "midnightIcon": "04n",
+            "minTemp": -5.35,
+            "noonCondition": "튼구름",
+            "noonIcon": "04d"
+        },
+        {
+            "avgFeelsLike": -5.19,
+            "date": "2026-01-12",
+            "feelsLikeAtMax": 0.92,
+            "feelsLikeAtMin": -9.35,
+            "maxTemp": 3.28,
+            "midnightCondition": "맑음",
+            "midnightIcon": "01n",
+            "minTemp": -6.73,
             "noonCondition": "맑음",
             "noonIcon": "01d"
         },
         {
-            "avgFeelsLike": -1.54,
-            "date": "2026-01-10",
-            "feelsLikeAtMax": 3.76,
-            "feelsLikeAtMin": -3.46,
-            "maxTemp": 7.68,
-            "midnightCondition": "온흐림",
-            "midnightIcon": "04n",
-            "minTemp": -1.0,
-            "noonCondition": "실 비",
-            "noonIcon": "10d"
-        },
-        {
-            "avgFeelsLike": -8.72,
-            "date": "2026-01-11",
-            "feelsLikeAtMax": -7.71,
-            "feelsLikeAtMin": -12.69,
-            "maxTemp": -1.79,
+            "avgFeelsLike": -4.0,
+            "date": "2026-01-13",
+            "feelsLikeAtMax": -1.65,
+            "feelsLikeAtMin": -9.84,
+            "maxTemp": 2.04,
             "midnightCondition": "구름조금",
             "midnightIcon": "03n",
-            "minTemp": -5.95,
-            "noonCondition": "온흐림",
-            "noonIcon": "04d"
-        },
-        {
-            "avgFeelsLike": -6.59,
-            "date": "2026-01-12",
-            "feelsLikeAtMax": 0.4,
-            "feelsLikeAtMin": -10.03,
-            "maxTemp": 2.9,
-            "midnightCondition": "맑음",
-            "midnightIcon": "01n",
-            "minTemp": -7.46,
+            "minTemp": -3.25,
             "noonCondition": "온흐림",
             "noonIcon": "04d"
         }
     ],
     "fullAddress": "대구광역시 동구 동대구로 550 (신암동)",
     "location": "동대구역",
-    "today": "2026-01-08"
+    "today": "2026-01-09"
 }
 ```
