@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>국내 일기 예보 서비스</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: floralwhite; font-family: sans-serif; }
+        .weather-main-card { border: none; border-radius: 24px; background: white; box-shadow: 0 10px 40px rgba(0,0,0,0.04); }
+        .forecast-card { border-radius: 20px; border: none; transition: all 0.3s ease; background: white; }
+        .forecast-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .temp-label { font-size: 0.75rem; color: black; font-weight: 600; margin-bottom: 2px; }
+        /* display: none;: 화면에 보이지 않도록. !important: 부트스트랩보다 우선권 가지도록 설정. */
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4 fw-bold text-dark">국내 일기 예보</h2>
+                <form onsubmit="fetchWeather(); return false;"> <div class="input-group input-group-lg shadow-sm">
+                    <input type="text" id="locationInput" class="form-control border-0" placeholder="지역을 입력해 주세요.">
+                    <button class="btn btn-primary px-4" type="submit" id="searchBtn">검색</button>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 로딩 화면 -->
+        <div id="loading" class="text-center hidden py-5">
+            <div class="spinner-border text-primary" role="status"></div>
+        </div>
+
+        <div id="resultSection" class="hidden">
+            <h4 class="fw-bold mb-4 px-2">현재 날씨 </h4>
+            <div class="weather-main-card p-4 p-md-5 mb-5">
+                <div class="row align-items-center">
+                    <div class="col-md-7">
+                        <span class="badge bg-light text-primary mb-2 border" id="todayDate"></span>
+                        <h2 id="resLocation" class="fw-bold display-6 mb-1"></h2>
+                        <p id="resAddress" class="text-muted mb-4"></p>
+                        <div class="d-flex align-items-center">
+                            <img id="currIcon" src="" alt="icon" class="me-3" style="width: 100px; height: 100px;">
+                            <div>
+                                <div class="d-flex align-items-baseline">
+                                    <h4 class="display-2 fw-bold mb-0" id="currTemp"></h4>
+                                </div>
+                                <p id="currCondition" class="fs-3 fw-medium text-primary mb-0"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 mt-4 mt-md-0 border-start ps-md-5">
+                        <div class="row g-4">
+                            <div class="col-6"><div class="temp-label">실제 기온</div><div class="fs-5 fw-bold" id="currRealTemp"></div></div>
+                            <div class="col-6"><div class="temp-label">체감 온도</div><div class="fs-5 fw-bold" id="currFeels"></div></div>
+                            <div class="col-6"><div class="temp-label">습도</div><div class="fs-5 fw-bold text-secondary" id="currHumidity"></div></div>
+                            <div class="col-6"><div class="temp-label">구름양</div><div class="fs-5 fw-bold text-primary" id="currClouds"></div></div>
+                            <div class="col-6"><div class="temp-label">풍속</div><div class="fs-5 fw-bold text-success" id="currWind"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="fw-bold mb-4 px-2">중기 예보 <span class="text-muted fs-6 fw-normal">(금일 제외 4일)</span></h4>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4" id="forecastList">
+                <div class="col" th:each="i : ${#numbers.sequence(0, 3)}">
+                    <div class="card forecast-card h-100 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3 border-bottom pb-2">
+                                <span class="badge bg-light text-primary border fw-bold" th:id="'fc-date-' + ${i}">-</span>
+                            </div>
+
+                            <div class="d-flex justify-content-between text-center mb-4">
+                                <div class="flex-fill">
+                                    <span class="badge rounded-pill bg-warning text-dark mb-1">낮 (정오, 12시)</span>
+                                    <img th:id="'fc-noonIcon-' + ${i}" src="" class="mx-auto d-block" style="width:45px">
+                                    <small class="fw-bold d-block text-truncate" th:id="'fc-noonCond-' + ${i}">-</small>
+                                </div>
+                                <div class="vr mx-2"></div>
+                                <div class="flex-fill">
+                                    <span class="badge rounded-pill bg-dark mb-1">밤 (자정, 00시)</span>
+                                    <img th:id="'fc-midIcon-' + ${i}" src="" class="mx-auto d-block" style="width:45px">
+                                    <small class="fw-bold d-block text-truncate" th:id="'fc-midCond-' + ${i}">-</small>
+                                </div>
+                            </div>
+
+                            <div class="row g-0 bg-light rounded-4 p-2 text-center mb-3 border">
+                                <div class="col-6 border-end">
+                                    <div class="temp-label text-primary">최저기온</div>
+                                    <div class="fw-bold fs-5" th:id="'fc-minTemp-' + ${i}">-</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="temp-label text-danger">최고기온</div>
+                                    <div class="fw-bold fs-5" th:id="'fc-maxTemp-' + ${i}">-</div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white border rounded p-2">
+                                <div class="d-flex justify-content-between mb-1" style="font-size: 0.8rem;">
+                                    <span class="text-muted small">최고 체감</span>
+                                    <span class="fw-bold text-danger" th:id="'fc-fMax-' + ${i}">-</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-1" style="font-size: 0.8rem;">
+                                    <span class="text-muted small">평균 체감</span>
+                                    <span class="fw-bold text-dark" th:id="'fc-fAvg-' + ${i}">-</span>
+                                </div>
+                                <div class="d-flex justify-content-between" style="font-size: 0.8rem;">
+                                    <span class="text-muted small">최저 체감</span>
+                                    <span class="fw-bold text-primary" th:id="'fc-fMin-' + ${i}">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    function fetchWeather() {
+        const location = document.getElementById('locationInput').value;
+        if (!location) {
+            alert('지역명을 입력해 주세요.');
+            return;
+        }
+
+        document.getElementById('loading').classList.remove('hidden');
+        document.getElementById('resultSection').classList.add('hidden');
+
+        fetch(`/weather?location=${encodeURIComponent(location)}`)
+            .then(res => {
+                if (!res.ok) {
+                    return res.text()
+                              .then(text => {throw new Error(text)})
+                }
+                return res.json()
+            })
+            .then(data => {
+                renderAll(data)
+            })
+            .catch(err => {
+                alert(err.message);
+            })
+            .finally(() =>{
+                document.getElementById('loading').classList.add('hidden');
+            })
+    }
+
+    function renderAll(data) {
+        // 현재 날씨 데이터
+        document.getElementById('resLocation').innerText = data.location;
+        document.getElementById('resAddress').innerText = data.fullAddress;
+        document.getElementById('todayDate').innerText = data.today;
+
+        const curr = data.currentDto;
+        document.getElementById('currTemp').innerText = curr.temp + '°C';
+        document.getElementById('currRealTemp').innerText = curr.temp + '°C';
+        document.getElementById('currFeels').innerText = curr.feelsLike + '°C';
+        document.getElementById('currHumidity').innerText = curr.humidity + '%';
+        document.getElementById('currWind').innerText = curr.windSpeed + ' m/s';
+        document.getElementById('currClouds').innerText = curr.clouds + '%';
+        document.getElementById('currCondition').innerText = curr.condition;
+        document.getElementById('currIcon').src = `https://openweathermap.org/img/wn/${curr.icon}@4x.png`;
+
+        // 고정된 4일치 예보 데이터. ( forEach(Value, Index) )
+        data.forecastDtos.forEach((item, i) => {
+            document.getElementById(`fc-date-${i}`).innerText = item.date;
+            document.getElementById(`fc-noonIcon-${i}`).src = `https://openweathermap.org/img/wn/${item.noonIcon}.png`;
+            document.getElementById(`fc-noonCond-${i}`).innerText = item.noonCondition;
+            document.getElementById(`fc-midIcon-${i}`).src = `https://openweathermap.org/img/wn/${item.midnightIcon}.png`;
+            document.getElementById(`fc-midCond-${i}`).innerText = item.midnightCondition;
+
+            document.getElementById(`fc-minTemp-${i}`).innerText = item.minTemp + '°C';
+            document.getElementById(`fc-maxTemp-${i}`).innerText = item.maxTemp + '°C';
+
+            document.getElementById(`fc-fMin-${i}`).innerText = item.feelsLikeAtMin + '°C';
+            document.getElementById(`fc-fAvg-${i}`).innerText = item.avgFeelsLike + '°C';
+            document.getElementById(`fc-fMax-${i}`).innerText = item.feelsLikeAtMax + '°C';
+        });
+
+        document.getElementById('resultSection').classList.remove('hidden');
+    }
+</script>
+
+</body>
+</html>

@@ -24,6 +24,7 @@ public class WeatherService {
 
     public WeatherResponseDto getWeather(JsonNode vWorldJsonNode) {
         String fullAddress = vWorldJsonNode.path("response").path("refined").path("text").asString();
+        String location = vWorldJsonNode.path("response").path("input").path("address").asString();
         // 경도
         double lon = vWorldJsonNode.path("response").path("result").path("point").path("x").asDouble();
         // 위도
@@ -34,6 +35,7 @@ public class WeatherService {
 
         return WeatherResponseDto.builder()
                 .today(LocalDate.now(ZoneId.of("Asia/Seoul")).toString())
+                .location(location)
                 .fullAddress(fullAddress)
                 .currentDto(currentDto)
                 .forecastDtos(forecastDtos)

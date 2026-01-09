@@ -9,6 +9,7 @@ import java.util.List;
 @Getter
 public class WeatherResponseDto {
     private String today;
+    private String location;
     private String fullAddress;
     private CurrentDto currentDto;
     private List<ForecastDto> forecastDtos;

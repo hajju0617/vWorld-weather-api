@@ -27,7 +27,7 @@ public class WeatherController {
         } catch (IllegalStateException ie) {
             return ResponseEntity.badRequest().body(ie.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("죄송합니다. 서버에서 오류가 발생하였습니다. 잠시 후 다시 시도해 주세요.");
+            return ResponseEntity.internalServerError().body("죄송합니다. 서버측에서 오류가 발생하였습니다. 잠시 후 다시 시도해 주세요.");
         }
     }
 }
