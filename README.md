@@ -12,6 +12,8 @@
 - [JSON 데이터를 JsonNode로 받을 경우.](https://velog.io/@hajju/JSON-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC-JsonNode%EB%A1%9C-%EB%B0%9B%EC%9D%84-%EA%B2%BD%EC%9A%B0)
 
 ---
+![Image](https://github.com/user-attachments/assets/ba023fb4-d451-4f2a-8c46-0672c44d2ce3)
+
 <img width="1338" height="1112" alt="Image" src="https://github.com/user-attachments/assets/e9ddf1fc-a35f-4be5-9e3e-f654d9431dc0" />
 
 `JSON Ex) 수서역, 동대구역`
