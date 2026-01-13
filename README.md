@@ -18,7 +18,7 @@ location을 이용해서 V-WORLD API를 통해 위도, 경도 값을 얻음.
 백엔드로부터 받은 JSON을 화면에 출력.
 ```
 ---
-
+#### 문제해결.
 - [Bug - JSON 응답이 {}(빈 객체)로 나오는 문제](https://velog.io/@hajju/Jackson-Bug-JSON-%EC%9D%91%EB%8B%B5%EC%9D%B4-%EB%B9%88-%EA%B0%9D%EC%B2%B4%EB%A1%9C-%EB%82%98%EC%98%A4%EB%8A%94-%EB%AC%B8%EC%A0%9C)
 - [What - RestClient (with WebClient, RestTemplate)](https://velog.io/@hajju/Spring-What-RestClient-with-WebClient-RestTemplate)
 - [JSON 데이터를 JsonNode로 받을 경우.](https://velog.io/@hajju/JSON-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC-JsonNode%EB%A1%9C-%EB%B0%9B%EC%9D%84-%EA%B2%BD%EC%9A%B0)
@@ -28,7 +28,10 @@ location을 이용해서 V-WORLD API를 통해 위도, 경도 값을 얻음.
 
 <img width="1338" height="1112" alt="Image" src="https://github.com/user-attachments/assets/e9ddf1fc-a35f-4be5-9e3e-f654d9431dc0" />
 
-`JSON Ex) 수서역, 동대구역`
+---
+
+
+#### JSON 데이터 Ex) 수서역, 동대구역
 - 수서역
 ```
 {
