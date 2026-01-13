@@ -5,6 +5,18 @@
 - 현재 날씨, 5일/3시간 예보를 얻기 위해 사용한 API
   - https://openweathermap.org/current
   - https://openweathermap.org/forecast5
+ 
+```
+사용자로부터 location을 입력 받음.
+↓
+location을 이용해서 V-WORLD API를 통해 위도, 경도 값을 얻음.
+↓
+위도, 경도 값을 이용해서 OpenWeatherMap API로 기상 정보를 얻음.
+↓
+받아온 기상 정보 데이터를 전처리 과정을 거친 후 JSON 형식으로 return 함.
+↓
+백엔드로부터 받은 JSON을 화면에 출력.
+```
 ---
 
 - [Bug - JSON 응답이 {}(빈 객체)로 나오는 문제](https://velog.io/@hajju/Jackson-Bug-JSON-%EC%9D%91%EB%8B%B5%EC%9D%B4-%EB%B9%88-%EA%B0%9D%EC%B2%B4%EB%A1%9C-%EB%82%98%EC%98%A4%EB%8A%94-%EB%AC%B8%EC%A0%9C)
